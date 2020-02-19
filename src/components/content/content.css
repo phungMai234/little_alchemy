@@ -1,0 +1,45 @@
+.container-content{
+    width: 80%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    background-image: url("img/workspace-background.png");
+    padding: 10px 10px;
+}
+.content-header{
+    display: flex;
+    justify-content: space-between;
+}
+    .content-header a{
+        text-decoration: none;
+        color: #938671;
+        border-bottom: solid 1px #e8ded0;
+    }
+    .content-header a:hover{
+        color: hotpink;
+    }
+.content-footer{
+    padding: 0px 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    position: absolute;
+}
+.result{
+    font-family: Roboto,sans-serif-light,sans-serif;
+    font-weight: 100;
+    color: #e8ded0;
+    cursor: pointer;
+    font-size: 60pt;
+    align-items: center;
+}
+.list-icons{
+    display: grid;
+}
+.list-icons img{
+    padding: 5px 0px;
+    cursor: pointer;
+}

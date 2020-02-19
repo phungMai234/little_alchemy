@@ -1,0 +1,16 @@
+.element{
+    display: flex;
+    align-items: center;
+    margin: 5px 0px 5px 0px;
+}
+.element-img{
+    height: 50px;
+    width: 53px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+.element-name{
+    font-size: 16px;
+    color: #938671;
+    font-family: Roboto,sans-serif-light,"Roboto Condensed",Helvetica,"Helvetica Neue",Arial,sans-serif;
+}
