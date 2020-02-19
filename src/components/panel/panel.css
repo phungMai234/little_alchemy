@@ -1,25 +1,25 @@
-.container-content{
-    width: 80%;
+.container-panel{
+    width:80%;
     top: 0;
     left: 0;
     bottom: 0;
     position: absolute;
-    background-image: url("img/workspace-background.png");
+    background-image: url("workspace-background.png");
     padding: 10px 10px;
 }
-.content-header{
+.panel-header{
     display: flex;
     justify-content: space-between;
 }
-    .content-header a{
+    .panel-header a{
         text-decoration: none;
         color: #938671;
         border-bottom: solid 1px #e8ded0;
     }
-    .content-header a:hover{
+    .panel-header a:hover{
         color: hotpink;
     }
-.content-footer{
+.panel-footer{
     padding: 0px 10px;
     left: 0;
     right: 0;

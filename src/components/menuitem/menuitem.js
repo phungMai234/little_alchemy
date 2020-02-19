@@ -2,23 +2,23 @@ import React from "react";
 import "./menuitem.css";
 import {Draggable} from "react-beautiful-dnd";
 
-function Menuitem(props) {
-    return (
-        <Draggable draggableId={props.item.id} index={props.index}>
-            {
-                (provider) => (
-                    <div className="element"
-                        {...provider.draggableProps}
-                        {...provider.dragHandleProps}
-                        ref={provider.innerRef}
-                    >
-                        <img className="element-img" src={props.item.img} alt={props.item.name}/>
-                        <div className="element-name">{props.item.name}</div>
-                    </div>)
-            }
-        </Draggable>
+class Menuitem extends React.Component{
+    render() {
+        return (
+            <Draggable draggableId={this.props.item.id} index={this.props.index}>
+                {(provider) =>
+                    (<div className="element"
+                          ref={provider.innerRef}
+                          {...provider.draggableProps}
+                          {...provider.dragHandleProps}>
+                        <img className="element-img" src={this.props.item.img} alt={this.props.item.name}/>
+                        <div className="element-name">{this.props.item.name}</div>
+                    </div>)}
+            </Draggable>
+        )
+    }
 
-    )
+
 }
 
 export default Menuitem;

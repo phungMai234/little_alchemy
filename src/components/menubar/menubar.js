@@ -3,7 +3,7 @@ import "./menubar.css"
 
 import Menuitem from "../menuitem/menuitem";
 
-import {listAlpha, listItem} from "../config/intitalData";
+import {listAlpha, listItem} from "../../config/intitalData";
 
 class Menubar extends React.Component {
     constructor(props)
@@ -20,7 +20,7 @@ class Menubar extends React.Component {
                 <div className="menubar-left">
                     {
                         this.state.listAlpha.map((e, index)=>{
-                            return <div className="alpha-item" key={e.id}>{e.toUpperCase()}</div>
+                            return <div key={e.id} className="alpha-item" >{e.toUpperCase()}</div>
                         })
                     }
                 </div>
@@ -28,7 +28,7 @@ class Menubar extends React.Component {
                 <div className="menubar-right">
                     {
                         this.state.listItem.map((e, index) => {
-                            return <Menuitem key={index} item={e} index={index}/>
+                            return <Menuitem key={e.id} item={e} index={index}/>
                         })
                     }
                 </div>

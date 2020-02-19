@@ -9,37 +9,37 @@ import energy from "./img/energy.png"
 
 const listItem = [
     {
-        id:1,
+        id:"1",
         img: dust,
         name: "dust"
     },
     {
-        id:2,
+        id:"2",
         img: earth,
         name: "earth"
     },
     {
-        id:3,
+        id:"3",
         img:earthquake,
         name:"earthquake"
     },
     {
-        id:4,
+        id:"4",
         img:fire,
         name:"fire"
     },
     {
-        id:5,
+        id:"5",
         img:sandy,
         name:"sandy"
     },
     {
-        id:6,
+        id:"6",
         img:eruption,
         name:"eruption"
     },
     {
-        id:7,
+        id:"7",
         img:energy,
         name:"energy"
     }

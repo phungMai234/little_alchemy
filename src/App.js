@@ -6,26 +6,21 @@ import 'bootstrap/dist/js/bootstrap.bundle'
 import '@fortawesome/fontawesome-free/css/all.css'
 import {DragDropContext} from "react-beautiful-dnd";
 import Content from "./components/content/content";
-import Menubar from "./components/menubar/menubar";
 
-function App(){
-    const onDragEnd = (result) => {
+class App extends React.Component{
+    onDragEnd = result =>{
         console.log(result);
-    };
+    }
+    render() {
+        return (
+            <DragDropContext onDragEnd={this.onDragEnd}>
+                <Content/>
+            </DragDropContext>
 
-    return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            {
-                () => {
-                    return(
-                    <div className="container">
-                        <Content/>
-                    </div>);
-                }
-            }
+        );
+    }
 
-        </DragDropContext>
-    );
+
 }
 
 export default App;
