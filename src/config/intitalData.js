@@ -9,41 +9,43 @@ import energy from "./img/energy.png"
 
 const listItem = [
     {
-        id:"1",
+        id:"item-1",
         img: dust,
         name: "dust"
     },
     {
-        id:"2",
+        id:"item-2",
         img: earth,
         name: "earth"
     },
     {
-        id:"3",
+        id:"item-3",
         img:earthquake,
         name:"earthquake"
     },
     {
-        id:"4",
+        id:"item-4",
         img:fire,
         name:"fire"
     },
     {
-        id:"5",
+        id:"item-5",
         img:sandy,
         name:"sandy"
     },
     {
-        id:"6",
+        id:"item-6",
         img:eruption,
         name:"eruption"
     },
     {
-        id:"7",
+        id:"item-7",
         img:energy,
         name:"energy"
     }
 ];
+const panel=["panel-1"];
+
 const listAlpha = ["a","b","c","d","e","f","g","h","i","j","k", "l"
     ,"m","n","o","p","q","r","s","t","u","v", "w", "x","y","z"];
-export {listItem, listAlpha}
+export {listItem, listAlpha, panel}
