@@ -4,7 +4,11 @@ import {Draggable} from "react-beautiful-dnd";
 
 function Item(props) {
     return (
-        <Draggable draggableId={props.item.id} index={props.index} key={props.index}>
+        <Draggable
+            draggableId={props.item.id}
+            index={props.index}
+            key={props.index}
+        >
             {
                 (provided, snapshot) => {
                     return (

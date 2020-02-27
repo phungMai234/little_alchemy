@@ -8,11 +8,12 @@ import {Droppable} from "react-beautiful-dnd";
 import Item from "../item/item";
 
 class Content extends React.Component {
-
-
     render() {
         return (
-            <Droppable droppableId="content" isCombineEnabled={true}>
+            <Droppable
+                droppableId="CONTENT"
+                isCombineEnabled={true}
+            >
                 {
                     (provided, snapshot) => {
                         return(
@@ -27,14 +28,14 @@ class Content extends React.Component {
                             </div>
                             <div className="body-content" >
                                 {
-                                    this.props.content.listItemContent.map((e, index) => {
+                                    this.props.items.map((e, index) => {
                                         return <Item key={e.id} item={e} index={index}/>
                                     })
                                 }
                             </div>
                             <div className="content-footer">
                                 <div className="result">
-                                    <div>{this.props.content.totalCurrentItem}/{this.props.content.totalItem}</div>
+                                    <div>/</div>
                                 </div>
                                 <div className="list-icons">
                                     <img src={la2button} alt="la2button"/>

@@ -5,7 +5,11 @@ import {Draggable} from "react-beautiful-dnd";
 class Menuitem extends React.Component {
     render() {
         return (
-            <Draggable key={this.props.item.id} draggableId={this.props.item.id} index={this.props.index}>
+            <Draggable
+                key={this.props.item.id}
+                draggableId={this.props.item.id}
+                index={this.props.index}
+            >
                 {
                     (provided, snapshot) => {
                         const style = {
