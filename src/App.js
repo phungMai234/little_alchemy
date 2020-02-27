@@ -7,44 +7,68 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import {DragDropContext} from "react-beautiful-dnd";
 import Content from "./components/content/content";
 import Menubar from "./components/menubar/menubar";
-import {listItem} from "./config/intitalData";
-
+import {initListItem} from "./config/intitalData";
 class App extends React.Component {
     state = {
-        listItem: listItem,
-        listItemContent:[]
+        listItem: initListItem,
+        listItemContent:[],
+        totalCurrentItem:initListItem.length,
+        totalItem: 589,
+        left:"",
+        top:""
     };
-
+    showCoords = (event) =>{
+        let  left = event.clientX;
+        let  top = event.clientY;
+        this.setState({
+           left:left,
+            top:top
+        })
+    }
     onDragEnd = result => {
-        console.log(result);
-        const {destination, source, draggableId} = result;
+
+        const {destination, source, draggableId, combine} = result;
+
+        if(combine)
+        {
+            const newList = this.state.listItemContent;
+            newList.splice(source.index, 1);
+            this.setState({
+                listItemContent: newList
+            })
+            return;
+        }
+
         if(!destination)
             return;
 
-        if(destination.droppableId === source.droppableId
-            && destination.index === source.index
-        )
+        if(destination.droppableId === source.droppableId && destination.droppableId !=="content")
         {
+            console.log("ec")
             return;
         }
         const newItem = this.state.listItem.find(e => e.id=== draggableId);
-        let newList = this.state.listItemContent.push(newItem);
-        newList = Array.from(newList);
-        this.setState({
 
+        newItem.left = this.state.left;
+        newItem.top = this.state.top;
+        console.log(newItem)
+        const newList = this.state.listItemContent;
+        newList.push(newItem);
+
+        this.setState({
             listItemContent: newList
         })
-        console.log(this.state.listItemContent);
+
     };
 
-
     render() {
-        console.log(this.state.listItemContent);
+
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
-                <div className="container-alchemy">
-                    <Content listItemContent={this.state.listItemContent}/>
+                <div className="container-alchemy" onMouseUp={this.showCoords}>
+                    <Content content={this.state}/>
                     <Menubar/>
+
                 </div>
             </DragDropContext>
         );

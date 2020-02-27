@@ -3,7 +3,7 @@ import "./menubar.css"
 
 import Menuitem from "../menuitem/menuitem";
 
-import {listAlpha, listItem} from "../../config/intitalData";
+import {listAlpha, initListItem} from "../../config/intitalData";
 import {Droppable} from "react-beautiful-dnd";
 
 class Menubar extends React.Component {
@@ -11,13 +11,13 @@ class Menubar extends React.Component {
         super(props);
         this.state = {
             listAlpha: listAlpha,
-            listItem:listItem
+            listItem:initListItem
         }
     }
 
     render() {
         return (
-            <Droppable droppableId="menubar">
+            <Droppable droppableId="menubar" isDropDisabled={true}>
                 {
                     (provided) => (
                         <div className="container-menubar"

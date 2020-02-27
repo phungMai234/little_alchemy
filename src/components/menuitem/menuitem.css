@@ -2,14 +2,25 @@
     display: flex;
     align-items: center;
     margin: 5px 0px 5px 0px;
+    user-select: none;
+    line-height: 1.5;
+
+}
+.element-clone{
+    align-items: center;
+    margin: 5px 0px 5px 0px;
+    width: 74px;
+    user-select: none;
+    line-height: 1.5;
+    display: flex;
 }
 .element-img{
     height: 50px;
     width: 53px;
     margin-right: 3px;
-    cursor: pointer;
 }
 .element-name{
+    text-align: center;
     font-size: 16px;
     color: #938671;
     font-family: Roboto,sans-serif-light,"Roboto Condensed",Helvetica,"Helvetica Neue",Arial,sans-serif;

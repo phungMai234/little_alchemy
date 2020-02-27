@@ -1,0 +1,16 @@
+.item{
+    width: 74px;
+    position: absolute;
+    z-index: 1;
+}
+.item-img{
+    height: 74px;
+    width: 74px;
+    cursor: pointer;
+}
+.item-name{
+    text-align: center;
+    font-size: 16px;
+    color: #938671;
+    font-family: Roboto,sans-serif-light,"Roboto Condensed",Helvetica,"Helvetica Neue",Arial,sans-serif;
+}
