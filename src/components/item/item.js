@@ -10,18 +10,12 @@ function Item(props) {
             key={props.index}
         >
             {
-                (provided, snapshot) => {
+                (provided) => {
                     return (
                         <div className="item"
                              {...provided.draggableProps}
                              {...provided.dragHandleProps}
                              ref={provided.innerRef}
-                             style={{
-                                 top: props.item.top,
-                                 left:props.item.left,
-                                 position: "absolute",
-                                 ...provided.draggableProps.style,
-                             }}
                         >
                             <img className="item-img" src={props.item.img} alt={props.item.name}/>
                             <div className="item-name">{props.item.name}</div>
@@ -30,7 +24,6 @@ function Item(props) {
                 }
             }
         </Draggable>
-
     );
 
 }

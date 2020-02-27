@@ -15,7 +15,7 @@ class Content extends React.Component {
                 isCombineEnabled={true}
             >
                 {
-                    (provided, snapshot) => {
+                    (provided) => {
                         return(
                         <div className="container-content"
 
