@@ -21,7 +21,6 @@ const reorder = (list, startIndex, endIndex) => {
 
 const copy = (source, destination, droppableSource, droppableDestination) => {
 
-    console.log("copy")
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const item = sourceClone[droppableSource.index];
@@ -29,19 +28,26 @@ const copy = (source, destination, droppableSource, droppableDestination) => {
     destClone.splice(droppableDestination.index, 0, {...item, id: uuidv4()});
     return destClone;
 };
+const remove = (listItems, index, newItem)=>
+{
+    const result = Array.from(listItems);
+    if(newItem)
+        result.splice(index, 1, newItem);
+    else
+        result.splice(index, 1);
+    return result;
+}
 const removeAndAddNew =(list, indexItemOn, idItemBelow, newItem) =>{
-    if(indexItemOn === true)
+
+    const result = Array.from(list);
+
+    if(!indexItemOn)
     {
-        const result = Array.from(list);
-
         let newIndexItemBelow = result.findIndex(e => e.id === idItemBelow);
-        result.splice(newIndexItemBelow, 1, {...newItem, id: uuidv4()});
-
+        result.splice(newIndexItemBelow, 1, {...newItem, id: uuidv4()})
         return result;
     }
     else {
-        const result = Array.from(list);
-
         result.splice(indexItemOn, 1);
         let newIndexItemBelow = result.findIndex(e => e.id === idItemBelow);
         result.splice(newIndexItemBelow, 1, {...newItem, id: uuidv4()})
@@ -67,6 +73,10 @@ const matchElementInsideContent = (listItems, idItemOn, idItemBelow, indexItemOn
 
     if(newItem)
     {
+        const checkExist = INIT_ITEMS.find(e => e.name === newItem.name);
+        if(!checkExist)
+            INIT_ITEMS.push({...newItem, id: uuidv4()});
+
         return removeAndAddNew(tmpList, indexItemOn, idItemBelow, newItem);
     }
     else
@@ -85,8 +95,10 @@ const matchElementFromMenubar = (list, idItemOn, idItemBelow) =>{
 
     if(newItem)
     {
-        let check = true;
-        return removeAndAddNew(list, check, idItemBelow, newItem);
+        const checkExist = INIT_ITEMS.find(e => e.name === newItem.name);
+        if(!checkExist)
+            INIT_ITEMS.push({...newItem, id: uuidv4()});
+        return removeAndAddNew(list, null, idItemBelow, newItem);
     }
     else
     {
@@ -101,7 +113,7 @@ class App extends React.Component {
     };
 
     onDragEnd = result => {
-
+        console.log("result",result)
         const {destination, source, combine, draggableId} = result;
 
         if(combine)
@@ -129,32 +141,37 @@ class App extends React.Component {
             }
             return;
         }
-        
-        switch (source.droppableId) {
-            case "CONTENT":
-                this.setState({
-                    listItems: reorder(
-                        this.state.listItems,
-                        source.index,
-                        destination.index
-                    )
-                });
-                break;
-            case 'ITEMS':
-                this.setState({
-                    listItems: copy(
-                        INIT_ITEMS,
-                        this.state.listItems,
-                        source,
-                        destination
-                    )
-                });
-                break;
 
-            default:
-                break;
+        if(source.droppableId === "CONTENT" && destination.droppableId ==="CONTENT")
+        {
+            this.setState({
+                listItems: reorder(
+                    this.state.listItems,
+                    source.index,
+                    destination.index
+                )
+            });
         }
-
+        if(source.droppableId === "ITEMS" && destination.droppableId ==="CONTENT")
+        {
+            this.setState({
+                listItems: copy(
+                    INIT_ITEMS,
+                    this.state.listItems,
+                    source,
+                    destination
+                )
+            });
+        }
+        if(source.droppableId === "CONTENT" && destination.droppableId ==="ITEMS")
+        {
+            this.setState({
+                listItems: remove(
+                    this.state.listItems,
+                    source.index
+                )
+            })
+        }
     };
 
     render() {

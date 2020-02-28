@@ -9,7 +9,7 @@ import {Droppable} from "react-beautiful-dnd";
 class Menubar extends React.Component {
     render() {
         return (
-            <Droppable droppableId="ITEMS" isDropDisabled={true}>
+            <Droppable droppableId="ITEMS">
                 {
                     (provided) => (
                         <div className="container-menubar"
